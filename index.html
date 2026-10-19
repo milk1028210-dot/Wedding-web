@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>《翔錡 那年我們的愛情故事》手繪青春微電影婚禮資訊頁</title>
+    <!-- 載入 Google Fonts 粉圓體 (Huninn) - 支援完整繁體中文圓弧字體與手繪文青感 -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Huninn&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ==========================================================================
+           1. 全域變數與奶茶色手繪風格 (Milk Tea Hand-Drawn Theme)
+           ========================================================================== */
+        :root {
+            --bg-milktea: #f7f3ed;
+            /* 溫潤奶茶底色 */
+            --card-cream: #fffdf9;
+            /* 柔和奶油白卡片 */
+            --milk-brown: #8c6d58;
+            /* 濃郁奶茶棕 (主要標題與框線) */
+            --dark-brown: #5c4333;
+            /* 深木棕文字 (高清晰可讀) */
+            --sub-brown: #a08875;
+            /* 淺褐次要文字 */
+            --warm-caramel: #d97736;
+            /* 焦糖橘紅 (重點強調與手繪貼紙) */
+            --accent-matcha: #8a9a86;
+            /* 鼠尾草綠 (校園清新搭配色) */
+            --tape-yellow: rgba(240, 225, 180, 0.75);
+            /* 貼紙膠帶黃 */
+            --border-doodle: #c4b5a5;
+            /* 手繪筆觸邊框色 */
+        }
+
+        /* 基礎重置：全體文字全面套用圓弧字體 Huninn (粉圓) 且拉開字距 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Huninn', sans-serif, system-ui;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-milktea);
+            color: var(--dark-brown);
+            line-height: 1.85;
+            letter-spacing: 1.2px;
+            /* 手繪點點網格背景 */
+            background-image:
+                radial-gradient(var(--border-doodle) 1px, transparent 1px);
+            background-size: 24px 24px;
+            background-attachment: fixed;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* ==========================================================================
+           2. 頁首與選單 (Hand-Drawn Header & Navigation)
+           ========================================================================== */
+        header {
+            text-align: center;
+            padding: 2.8rem 1rem 1.8rem;
+            background: transparent;
+            position: relative;
+        }
+
+        .movie-tag {
+            display: inline-block;
+            background: var(--accent-matcha);
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 0.35rem 1.2rem;
+            border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+            letter-spacing: 1.8px;
+            margin-bottom: 0.8rem;
+            border: 2px solid var(--dark-brown);
+            box-shadow: 2px 2px 0px rgba(92, 67, 51, 0.2);
+        }
+
+        header h1 {
+            font-size: clamp(1.6rem, 5vw, 2.4rem);
+            color: var(--milk-brown);
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 0.3rem;
+            word-break: break-word;
+        }
+
+        header p {
+            color: var(--sub-brown);
+            font-size: clamp(0.85rem, 3vw, 0.95rem);
+            font-weight: 500;
+            letter-spacing: 1.2px;
+        }
+
+        /* 純 CSS 切換控制 (頁籤與手機漢堡選單開關) */
+        input[type="radio"],
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        /* 手機版漢堡按鈕 (預設隱藏) */
+        .menu-toggle-btn {
+            display: none;
+            background: var(--card-cream);
+            border: 2px solid var(--milk-brown);
+            color: var(--milk-brown);
+            padding: 0.5rem 1rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border-radius: 12px;
+            cursor: pointer;
+            margin: 0 auto 0.5rem auto;
+            text-align: center;
+            width: fit-content;
+            box-shadow: 2px 2px 0px rgba(140, 109, 88, 0.15);
+        }
+
+        /* 頁面導覽選單 (RWD 響應式與摺疊設計) */
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            background: rgba(247, 243, 237, 0.98);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0.8rem 0.5rem;
+            border-top: 1px dashed var(--milk-brown);
+            border-bottom: 1px dashed var(--milk-brown);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .nav-tab {
+            padding: 0.5rem 0.9rem;
+            color: var(--sub-brown);
+            cursor: pointer;
+            font-size: 0.88rem;
+            font-weight: 700;
+            transition: all 0.2s ease;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            text-align: center;
+            letter-spacing: 1.2px;
+            white-space: nowrap;
+        }
+
+        .nav-tab:hover {
+            color: var(--warm-caramel);
+            background: #f1e9dd;
+        }
+
+        /* 切換 Tab 高亮狀態 */
+        #tab-1:checked~.nav-bar label[for="tab-1"],
+        #tab-2:checked~.nav-bar label[for="tab-2"],
+        #tab-3:checked~.nav-bar label[for="tab-3"],
+        #tab-4:checked~.nav-bar label[for="tab-4"],
+        #tab-5:checked~.nav-bar label[for="tab-5"],
+        #tab-6:checked~.nav-bar label[for="tab-6"] {
+            color: var(--dark-brown);
+            background: #eedfd0;
+            border: 2px solid var(--milk-brown);
+            border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+            box-shadow: 2px 2px 0px var(--milk-brown);
+        }
+
+        /* ==========================================================================
+           3. 內容顯示區塊與手繪卡片外框 (Organic Hand-Drawn Cards)
+           ========================================================================== */
+        .main-container {
+            max-width: 880px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            min-height: 65vh;
+        }
+
+        .page-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        #tab-1:checked~.main-container #content-1,
+        #tab-2:checked~.main-container #content-2,
+        #tab-3:checked~.main-container #content-3,
+        #tab-4:checked~.main-container #content-4,
+        #tab-5:checked~.main-container #content-5,
+        #tab-6:checked~.main-container #content-6 {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 經典圖片中的「有機手繪感外框」卡片 */
+        .doodle-card {
+            background: var(--card-cream);
+            border: 2.5px solid var(--milk-brown);
+            /* 不規則的手繪曲線邊框 */
+            border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+            padding: 2.2rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 4px 6px 0px rgba(140, 109, 88, 0.25);
+            position: relative;
+        }
+
+        .tape {
+            position: absolute;
+            background-color: var(--tape-yellow);
+            width: 90px;
+            height: 22px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            opacity: 0.85;
+            z-index: 5;
+        }
+
+        .section-title {
+            color: var(--milk-brown);
+            font-size: clamp(1.1rem, 4vw, 1.35rem);
+            font-weight: 900;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            letter-spacing: 1.5px;
+        }
+
+        /* 拍立得相片風格網格 (RWD 響應式自適應) */
+        .polaroid-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .polaroid-item {
+            background: #ffffff;
+            padding: 10px 10px 24px 10px;
+            border: 2px solid var(--milk-brown);
+            border-radius: 255px 12px 225px 15px/15px 225px 12px 255px;
+            box-shadow: 3px 4px 0px rgba(140, 109, 88, 0.18);
+            transform: rotate(-1deg);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .polaroid-item:nth-child(even) {
+            transform: rotate(1.5deg);
+        }
+
+        .polaroid-item:hover {
+            transform: scale(1.02) rotate(0deg);
+            z-index: 10;
+        }
+
+        .polaroid-img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+            border: 1px solid var(--border-doodle);
+            border-radius: 4px;
+        }
+
+        .polaroid-text {
+            text-align: center;
+            font-size: 0.88rem;
+            color: var(--dark-brown);
+            margin-top: 0.8rem;
+            font-weight: 700;
+        }
+
+        .polaroid-date {
+            display: block;
+            font-size: 0.78rem;
+            color: var(--sub-brown);
+            margin-top: 0.2rem;
+            letter-spacing: 1px;
+        }
+
+        .doodle-quote {
+            background: #fbf7f0;
+            border: 1.5px dashed var(--milk-brown);
+            padding: 1rem 1.2rem;
+            border-radius: 12px;
+            color: var(--dark-brown);
+            margin: 1.2rem 0;
+            font-size: 0.92rem;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           4. 觀影席位票券與影廳座位表 (Ticket & Cinema Seating Layout)
+           ========================================================================== */
+        .ticket-card {
+            background: #ffffff;
+            border: 2px solid var(--milk-brown);
+            border-radius: 200px 15px 185px 15px/15px 185px 15px 200px;
+            padding: 1.8rem;
+            margin: 1.5rem 0;
+            position: relative;
+            box-shadow: 3px 5px 0px rgba(140, 109, 88, 0.15);
+        }
+
+        .ticket-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            border-bottom: 2px dashed var(--border-doodle);
+            padding-bottom: 0.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .ticket-header h3 {
+            color: var(--warm-caramel);
+            font-size: 1.1rem;
+            font-weight: 900;
+        }
+
+        .ticket-status {
+            background: var(--accent-matcha);
+            color: #fff;
+            padding: 0.2rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .ticket-body-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .ticket-info-item h5 {
+            color: var(--sub-brown);
+            font-size: 0.78rem;
+        }
+
+        .ticket-info-item p {
+            color: var(--dark-brown);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        /* 時間軸與影廳座位表樣式 */
+        .doodle-timeline {
+            position: relative;
+            padding-left: 1.8rem;
+            border-left: 2px dashed var(--milk-brown);
+            margin: 1.5rem 0 1rem 0.8rem;
+        }
+
+        .timeline-node {
+            position: relative;
+            margin-bottom: 1.6rem;
+        }
+
+        .timeline-node::before {
+            content: '✏️';
+            position: absolute;
+            left: -2.4rem;
+            top: -0.1rem;
+            font-size: 0.9rem;
+        }
+
+        .time-badge {
+            display: inline-block;
+            background: var(--warm-caramel);
+            color: #ffffff;
+            padding: 0.15rem 0.7rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .node-title {
+            font-size: 0.98rem;
+            font-weight: 900;
+            color: var(--milk-brown);
+            margin-bottom: 0.2rem;
+        }
+
+        .node-desc {
+            font-size: 0.85rem;
+            color: var(--sub-brown);
+        }
+
+        /* 圓形影廳座位表樣式 */
+        .banquet-hall {
+            background: #fffdf9;
+            border: 2px solid var(--milk-brown);
+            border-radius: 200px 15px 185px 15px/15px 185px 15px 200px;
+            padding: 1.5rem 0.8rem;
+            margin-top: 1.2rem;
+        }
+
+        .stage-banner {
+            text-align: center;
+            background: var(--milk-brown);
+            color: #ffffff;
+            padding: 0.6rem;
+            font-weight: bold;
+            border-radius: 10px;
+            margin-bottom: 1.8rem;
+            letter-spacing: 2px;
+            font-size: 0.95rem;
+            border: 2px solid var(--dark-brown);
+        }
+
+        .banquet-grid-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .banquet-row {
+            display: grid;
+            grid-template-columns: 1fr 30px 1fr;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .table-side {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem;
+        }
+
+        .circular-table {
+            background: #f7f3ed;
+            border: 2px dashed var(--milk-brown);
+            border-radius: 50%;
+            width: 100%;
+            max-width: 110px;
+            aspect-ratio: 1;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0.4rem;
+            box-shadow: 2px 3px 0px rgba(140, 109, 88, 0.12);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .circular-table:hover {
+            transform: scale(1.04);
+            background: #ffffff;
+            border-color: var(--warm-caramel);
+        }
+
+        .circular-table h4 {
+            color: var(--warm-caramel);
+            font-size: 0.78rem;
+            margin-bottom: 0.1rem;
+            font-weight: 900;
+        }
+
+        .circular-table p {
+            font-size: 0.68rem;
+            color: var(--sub-brown);
+            line-height: 1.15;
+        }
+
+        .center-aisle-label {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--sub-brown);
+            writing-mode: vertical-rl;
+            letter-spacing: 3px;
+            margin: 0 auto;
+            font-weight: bold;
+        }
+
+        /* Service Cards, Map Frame & Responsive Rules */
+        .service-desk-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .service-card {
+            background: #ffffff;
+            border: 2px solid var(--milk-brown);
+            border-radius: 200px 12px 185px 12px/12px 185px 12px 200px;
+            padding: 1.2rem;
+            box-shadow: 2px 4px 0px rgba(140, 109, 88, 0.15);
+            position: relative;
+        }
+
+        .service-card h4 {
+            color: var(--milk-brown);
+            font-size: 0.98rem;
+            font-weight: 900;
+            margin-bottom: 0.4rem;
+        }
+
+        .service-card p {
+            font-size: 0.85rem;
+            color: var(--dark-brown);
+            margin-bottom: 0.3rem;
+        }
+
+        .faq-accordion-item {
+            background: #f7f3ed;
+            border: 1.5px dashed var(--milk-brown);
+            border-radius: 12px;
+            padding: 0.9rem 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .faq-accordion-item h5 {
+            color: var(--warm-caramel);
+            font-size: 0.92rem;
+            font-weight: 900;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-accordion-item p {
+            font-size: 0.85rem;
+            color: var(--dark-brown);
+        }
+
+        .info-doodle-item {
+            background: #ffffff;
+            border-radius: 180px 12px 165px 12px/12px 165px 12px 180px;
+            padding: 1.2rem;
+            border: 2px solid var(--milk-brown);
+            margin-bottom: 1rem;
+        }
+
+        .info-doodle-item h4 {
+            color: var(--milk-brown);
+            font-size: 0.98rem;
+            margin-bottom: 0.3rem;
+            font-weight: 900;
+        }
+
+        .map-doodle-frame {
+            width: 100%;
+            background: #ffffff;
+            border: 2px dashed var(--milk-brown);
+            border-radius: 14px;
+            padding: 1rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .notice-doodle-list {
+            list-style: none;
+        }
+
+        .notice-doodle-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1.2rem;
+            font-size: 0.88rem;
+        }
+
+        .notice-doodle-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--warm-caramel);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .color-palette-box {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            align-items: center;
+        }
+
+        .color-circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid var(--milk-brown);
+            display: inline-block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: var(--sub-brown);
+            font-size: 0.8rem;
+            border-top: 1px dashed var(--milk-brown);
+            margin-top: 2.5rem;
+        }
+
+        /* 📱 RWD 響應式與摺疊導覽列 (Responsive & Collapsible Menu) */
+        @media (max-width: 640px) {
+            header {
+                padding: 2rem 0.8rem 1.2rem;
+            }
+
+            /* 手機版顯示摺疊選單按鈕 */
+            .menu-toggle-btn {
+                display: block;
+            }
+
+            /* 手機版導覽列預設收合，透過 checkbox 展開 */
+            .nav-bar {
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                background: var(--card-cream);
+                border: 2px solid var(--milk-brown);
+                border-radius: 16px;
+                margin: 0 1rem 1rem 1rem;
+                padding: 0.6rem;
+                box-shadow: 3px 4px 0px rgba(140, 109, 88, 0.15);
+            }
+
+            #mobile-menu-toggle:checked~.nav-bar {
+                display: flex;
+            }
+
+            .nav-tab {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+                text-align: center;
+                border-radius: 12px;
+                margin-bottom: 0.2rem;
+            }
+
+            .doodle-card {
+                padding: 1.5rem 1.1rem;
+            }
+
+            /* 行動裝置上的影廳座位表重排 */
+            .banquet-row {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .table-side {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.5rem;
+            }
+
+            .center-aisle-label {
+                writing-mode: horizontal-tb;
+                padding: 0.3rem 0;
+                border-top: 1px dashed var(--milk-brown);
+                border-bottom: 1px dashed var(--milk-brown);
+                width: 100%;
+            }
+
+            .circular-table {
+                max-width: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 頁面切換控制 (純 CSS 狀態機制，完全無表單) -->
+    <input type="radio" id="tab-1" name="page-tab" checked>
+    <input type="radio" id="tab-2" name="page-tab">
+    <input type="radio" id="tab-3" name="page-tab">
+    <input type="radio" id="tab-4" name="page-tab">
+    <input type="radio" id="tab-5" name="page-tab">
+    <input type="radio" id="tab-6" name="page-tab">
+
+    <!-- 手機版摺疊導覽列控制開關 -->
+    <input type="checkbox" id="mobile-menu-toggle">
+
+    <!-- 頂部手繪青春風格標題欄 -->
+    <header>
+        <span class="movie-tag">🎬 青春校園微電影特映會</span>
+        <h1>《翔錡 那年我們的愛情故事》</h1>
+        <p>主演：黃昱翔 ✕ 陳思錡 ｜ 放映日期：2027.05.09 (日)</p>
+    </header>
+
+    <!-- 手機版展開/收合選單按鈕 -->
+    <label for="mobile-menu-toggle" class="menu-toggle-btn">📋 展開選單 / 頁面導覽</label>
+
+    <!-- 頁面導覽切換列 (RWD 摺疊設計) -->
+    <nav class="nav-bar">
+        <label for="tab-1" class="nav-tab" onclick="document.getElementById('mobile-menu-toggle').checked = false;">🎬
+            劇照與主頁</label>
+        <label for="tab-2" class="nav-tab" onclick="document.getElementById('mobile-menu-toggle').checked = false;">🎟️
+            觀影席位預約</label>
+        <label for="tab-3" class="nav-tab" onclick="document.getElementById('mobile-menu-toggle').checked = false;">⏱️
+            流程與座位</label>
+        <label for="tab-4" class="nav-tab" onclick="document.getElementById('mobile-menu-toggle').checked = false;">📍
+            影廳與交通</label>
+        <label for="tab-5" class="nav-tab" onclick="document.getElementById('mobile-menu-toggle').checked = false;">📣
+            入場須知</label>
+        <label for="tab-6" class="nav-tab" onclick="document.getElementById('mobile-menu-toggle').checked = false;">🛎️
+            聯絡服務台</label>
+    </nav>
+
+    <!-- 主要內容區 -->
+    <main class="main-container">
+
+        <!-- ================= PAGE 1: 故事主頁與劇照 ================= -->
+        <div id="content-1" class="page-content">
+            <div class="doodle-card">
+                <div class="tape" style="top:-10px; left:15%; transform: rotate(-3deg);"></div>
+                <div class="tape" style="top:-10px; right:15%; transform: rotate(4deg);"></div>
+
+                <div style="text-align: center; margin-bottom: 1.2rem;">
+                    <img src="./image/photo1.png" alt="主視覺海報"
+                        style="width: 100%; max-height: 400px; object-fit: cover; border-radius: 12px; border: 2px solid var(--milk-brown); box-shadow: 2px 4px 0px rgba(140, 109, 88, 0.15);">
+                </div>
+
+                <div class="doodle-quote">
+                    <h2
+                        style="font-size: clamp(1.05rem, 3.5vw, 1.25rem); color: var(--warm-caramel); font-weight: 900; margin-bottom: 0.4rem; letter-spacing: 1.5px;">
+                        「從那年 走到今天，從教室走到了紅毯前。」
+                    </h2>
+                    <p style="color: var(--dark-brown); font-size: 0.88rem;">
+                        高中時的相遇，遠距離的等待，還有那些一起走過的日常。<br>
+                        謝謝你曾參與我們人生中的不同片段。<br>
+                        這一次，想邀請你走進我們的婚禮，成為這部愛情電影裡最珍貴的觀眾。
+                    </p>
+                </div>
+
+                <div class="section-title" style="margin-top: 1.8rem;">
+                    <span>🖼️ 劇照相冊 (Movie Gallery)</span>
+                </div>
+
+                <div class="doodle-quote">
+                    「這些片段沒有劇本，卻成了我們最捨不得刪除的畫面。」
+                </div>
+
+                <div class="polaroid-grid">
+                    <div class="polaroid-item">
+                        <div class="tape" style="width:65px; height:18px; top:-8px; left:30%;"></div>
+                        <img src="./image/photo2.png" alt="劇照1" class="polaroid-img">
+                        <div class="polaroid-text">
+                            有些相遇<br>
+                            當時沒想過會成為一輩子
+                            <span class="polaroid-date">2016</span>
+                        </div>
+                    </div>
+
+                    <div class="polaroid-item">
+                        <div class="tape" style="width:65px; height:18px; top:-8px; left:40%;"></div>
+                        <img src="./image/photo3.jpg" alt="劇照2" class="polaroid-img">
+                        <div class="polaroid-text">
+                            距離改變了見面的方式<br>
+                            沒有改變想念
+                            <span class="polaroid-date">2016.12.25</span>
+                        </div>
+                    </div>
+
+                    <div class="polaroid-item">
+                        <div class="tape" style="width:65px; height:18px; top:-8px; left:25%;"></div>
+                        <img src="./image/photo4.jpg" alt="劇照3" class="polaroid-img">
+                        <div class="polaroid-text">
+                            後來才明白<br>
+                            幸福藏在一次次的接送與等待裡
+                            <span class="polaroid-date">2025.10.25</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 2: 觀影席位預約 ================= -->
+        <div id="content-2" class="page-content">
+            <div class="doodle-card">
+                <div class="tape" style="top:-10px; left:30%; transform: rotate(-2deg);"></div>
+
+                <div class="section-title">
+                    <span>🎟️ 觀影席位預約與憑證說明 (Ticket & RSVP)</span>
+                </div>
+                <p style="font-size: 0.88rem; color: var(--sub-brown); margin-bottom: 1rem;">
+                    每一個座位，都想留給重要的你。<br>
+                    請先確認本場放映資訊，並依邀請方式完成出席回覆，讓我們提前安排座位與餐點，一起準時入場。
+                </p>
+
+                <div class="ticket-card">
+                    <div class="ticket-header">
+                        <h3>🎬 《翔錡 那年我們的愛情故事》特映會劃位票券</h3>
+                        <span class="ticket-status">● 開放預約劃位中</span>
+                    </div>
+
+                    <div class="ticket-body-grid">
+                        <div class="ticket-info-item">
+                            <h5>上映日期 DATE </h5>
+                            <p>2027.05.09 (日)</p>
+                        </div>
+                         <div class="ticket-info-item">
+                            <h5>入場時間 TIME</h5>
+                            <p> 11:30 AM 入場</p>
+                        </div>
+                        <div class="ticket-info-item">
+                            <h5>特映地點 VENUE</h5>
+                            <p>香格里拉冬山河渡假飯店 濠丁堡</p>
+                        </div>
+                        <div class="ticket-info-item">
+                            <h5>預約席位類型 SEAT TYPE</h5>
+                            <p>專屬婚宴席位｜依新人安排入座</p>
+                        </div>
+                        <div class="ticket-info-item">
+                            <h5>入場方式 ADMISSION PASS</h5>
+                            <p>請依現場報到指引完成簽到。</p>
+                        </div>
+                    </div>
+
+                    <div class="doodle-quote" style="margin: 0.5rem 0 0; font-size: 0.85rem; background: #fffdf9;">
+                        🎟️ 本憑證代表一份邀請，也是一段故事的入場資格。<br>
+                        💡💡請預留充足交通時間，期待在首映當天與你相見。💡💡
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 3: 婚禮流程與影廳座位表 ================= -->
+        <div id="content-3" class="page-content">
+            <div class="doodle-card">
+                <div class="section-title">
+                    <span>🎬 特映會放映流程 (Schedule)</span>
+                </div>
+
+                <div class="doodle-timeline">
+                    <div class="timeline-node">
+                        <span class="time-badge">09:00 AM</span>
+                        <div class="node-title">水晶教堂證婚</div>
+                        <div class="node-desc">進一步一同見證 Sean & Kiki 的愛情。</div>
+                    </div>
+
+                    <div class="timeline-node">
+                        <span class="time-badge">10:00 PM</span>
+                        <div class="node-title">片刻休息吃小點</div>
+                        <div class="node-desc">一起在歐式城堡中享受片刻美好。</div>
+                    </div>
+
+                    <div class="timeline-node">
+                        <span class="time-badge">11:40 PM</span>
+                        <div class="node-title">微電影準時上映</div>
+                        <div class="node-desc">最精彩宴席開序幕。</div>
+                    </div>
+
+                    <div class="timeline-node">
+                        <span class="time-badge">12:00 PM</span>
+                        <div class="node-title">午宴開席</div>
+                        <div class="node-desc">宜蘭美食，在地饗宴。</div>
+                    </div>
+
+                    <div class="timeline-node">
+                        <span class="time-badge">15:00 PM</span>
+                        <div class="node-title">微電影合照與送客</div>
+                        <div class="node-desc">於背板區合影，留在我們一起見證的愛情。</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doodle-card">
+                <div class="section-title">
+                    <span>💺 影廳座位表 (Cinema Seating Plan)</span>
+                </div>
+                <p style="font-size: 0.88rem; color: var(--sub-brown); margin-bottom: 1rem;">
+                    請尋找您對應的「觀影分區/位置」尋找座位區：
+                </p>
+
+                <div class="banquet-hall">
+                    <div class="stage-banner">🎭 舞台區 (Stage & Screen)</div>
+
+                    <div class="banquet-grid-layout">
+                        <!-- 第一排 -->
+                        <div class="banquet-row">
+                            <div class="table-side">
+                                <div class="circular-table">
+                                    <h4>👑 VIP 主桌</h4>
+                                    <p>長輩與雙方家人</p>
+                                </div>
+                                <div class="circular-table">
+                                    <h4>🎓 3年2班區</h4>
+                                    <p>高中同班同學區</p>
+                                </div>
+                            </div>
+                            <div class="center-aisle-label">中 央 走 道</div>
+                            <div class="table-side">
+                                <div class="circular-table">
+                                    <h4>🎸 熱音搖滾區</h4>
+                                    <p>大學社團好友區</p>
+                                </div>
+                                <div class="circular-table">
+                                    <h4>🏀 明星球員區</h4>
+                                    <p>新郎球友與死黨</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 第二排 -->
+                        <div class="banquet-row">
+                            <div class="table-side">
+                                <div class="circular-table">
+                                    <h4>🔬 核心研究區</h4>
+                                    <p>研究所與公司同事</p>
+                                </div>
+                                <div class="circular-table">
+                                    <h4>🍿 貴賓包廂區</h4>
+                                    <p>親朋好友與貴賓</p>
+                                </div>
+                            </div>
+                            <div class="center-aisle-label">中 央 走 道</div>
+                            <div class="table-side">
+                                <div class="circular-table">
+                                    <h4>✨ 幸福預備席</h4>
+                                    <p>親友與工作夥伴</p>
+                                </div>
+                                <div class="circular-table">
+                                    <h4>💖 甜蜜同窗席</h4>
+                                    <p>摯友與青春夥伴</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 4: 影廳與交通 ================= -->
+        <div id="content-4" class="page-content">
+            <div class="doodle-card">
+                <div class="section-title">
+                    <span>📍 放映地點與交通 (Venue & Transport)</span>
+                </div>
+
+                <div class="info-doodle-item">
+                    <h4>🏢 宴會場地</h4>
+                    <p>香格里拉冬山河渡假飯店 濠丁堡</p>
+                    <p style="color: var(--sub-brown); font-size: 0.82rem; margin-top: 0.2rem;">地址：宜蘭縣五結鄉公園二路15號</p>
+                </div>
+
+                <div class="info-doodle-item">
+                    <h4>🚗 駕車與停車資訊</h4>
+                    <p>飯店備有專用停車場，兩大停車場皆可停放。</p>
+                </div>
+
+                <div class="map-doodle-frame">
+                    <p style="font-weight: bold; font-size: 1rem; color: var(--warm-caramel); margin-bottom: 0.4rem;">
+                        🗺️ 地圖導引</p>
+                    <p style="font-size: 0.82rem; color: var(--sub-brown); margin-bottom: 0.8rem;">點擊地圖可快速跳轉至 Google
+                        Maps 導航</p>
+                    <div
+                        style="background: #f7f3ed; border: 1.5px solid var(--milk-brown); border-radius: 10px; padding: 1.5rem; color: var(--dark-brown);">
+                        📍 <strong>香格里拉冬山河渡假飯店</strong><br>
+                        <span style="font-size: 0.85rem; color: var(--sub-brown);">宜蘭縣五結鄉協和中路13號（公園二路15號）</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 5: 入場須知 ================= -->
+        <div id="content-5" class="page-content">
+            <div class="doodle-card">
+                <div class="section-title">
+                    <span>📣 觀影與出席注意事項 (Notice)</span>
+                </div>
+
+                <ul class="notice-doodle-list">
+                    <li>
+                        <strong>Dress Code 穿搭建議：</strong>
+                        <br>
+                        歡迎穿著「奶茶色系 / 燕麥色 / 大地色 / 卡其色」配件，一同打造溫暖的手繪青春校園風格！
+                        <div class="color-palette-box">
+                            <span style="font-size: 0.85rem; color: var(--sub-brown);">推薦色系：</span>
+                            <span class="color-circle" style="background: #f7f3ed;"></span>
+                            <span class="color-circle" style="background: #d97736;"></span>
+                            <span class="color-circle" style="background: #8c6d58;"></span>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>準時入場：</strong>
+                        <br>
+                        首映微電影將於 11:40 準時放映，請各位嘉賓於 11:30 前完成簽到並領取紀念票根。
+                    </li>
+                    <li>
+                        <strong>飲食需求：</strong>
+                        <br>
+                        若現場有臨時特殊飲食過敏，請隨時告知現場工作人員。
+                    </li>
+                    <li>
+                        <strong>社群打卡標籤：</strong>
+                        <br>
+                        現場拍攝照片歡迎上傳標註 <strong style="color: var(--warm-caramel);">#翔錡那年我們的愛情故事2027</strong>。
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 6: 聯絡服務台 ================= -->
+        <div id="content-6" class="page-content">
+            <div class="doodle-card">
+                <div class="section-title">
+                    <span>🛎️ 聯絡服務台與常見解答 (Service Desk & FAQ)</span>
+                </div>
+
+                <p style="font-size: 0.88rem; color: var(--sub-brown); margin-bottom: 1rem;">
+                    有任何關於當天流程、交通、席位安排或臨時需求，隨時與我們的總召與接待小組聯繫！
+                </p>
+
+                <div class="service-desk-grid">
+                    <div class="service-card">
+                        <h4>📞 服務台大本營</h4>
+                        <p><strong>負責人：</strong> 新人本人 / Kiki</p>
+                        <p><strong>服務內容：</strong> 婚前前夕各種疑難雜症</p>
+                        <p><strong>聯繫方式：</strong> 請聯絡新人本人通訊軟體 (Line / IG)</p>
+                    </div>
+
+                    <div class="service-card">
+                        <h4>🎀 當日招待與接待組</h4>
+                        <p><strong>負責人：</strong> xxx / 林小美</p>
+                        <p><strong>服務內容：</strong> 座位調整、素食變更</p>
+                        <p><strong>聯絡方式：</strong> <span style="color: var(--warm-caramel); font-weight: bold;">開啟 LINE
+                                聯繫</span></p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1.8rem;">
+                    <h4
+                        style="color: var(--milk-brown); font-weight: 900; margin-bottom: 0.8rem; border-bottom: 1px dashed var(--border-doodle); padding-bottom: 0.4rem;">
+                        ❓ 觀影常見問與答 (FAQ)
+                    </h4>
+
+                    <div class="faq-accordion-item">
+                        <h5>Q1: 攜帶小朋友是否有提供兒童座椅或兒童餐？</h5>
+                        <p>答：有的！飯店現場皆備有兒童餐椅與兒童餐具，劃位時已為您註記。</p>
+                    </div>
+
+                    <div class="faq-accordion-item">
+                        <h5>Q2: 婚禮當天開車前往該如何折抵停車費？</h5>
+                        <p>答：請於 3 樓簽到服務台領取「4 小時免費停車券」，離場時於停車場繳費機掃描即可。</p>
+                    </div>
+
+                    <div class="faq-accordion-item">
+                        <h5>Q3: 微電影放映期間是否可以拍照打卡？</h5>
+                        <p>答：非常歡迎！請使用無聲相機或閃光燈關閉模式，並標註 #翔錡那年我們的愛情故事2027 與我們分享喜悅。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 頁尾 -->
+    <footer>
+        <p>&copy; 2027 黃昱翔 ✕ 陳思錡 青春微電影婚禮小組. All Rights Reserved.</p>
+        <p style="color: var(--sub-brown); font-size: 0.75rem; margin-top:0.3rem;">✏️ 一場關於黃昱翔與陳思錡長跑 10 年的手繪青春夢境 🎬</p>
+    </footer>
+
+</body>
+
+</html>
